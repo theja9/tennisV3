@@ -7,6 +7,7 @@ public class ScoreService {
 
     private static final String LOVE = "Love";
     private static final String FIFTEEN = "Fifteen";
+    private static final String THIRTY = "Thirty";
 
     public String getScore(int playerOneScore, int playerTwoScore) {
         return String.format("%s %s", translateScore(playerOneScore), translateScore(playerTwoScore));
@@ -18,6 +19,9 @@ public class ScoreService {
         }
         if(score == 1) {
             return FIFTEEN;
+        }
+        if(score == 2) {
+            return THIRTY;
         }
         return "Invalid Score";
     }
