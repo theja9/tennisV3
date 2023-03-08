@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
 @WebMvcTest(TennisController.class)
@@ -35,8 +34,8 @@ class TennisControllerTest {
 
         if (scorer.equals(Scorer.PLAYER_ONE)) {
             verify(players, Mockito.times(1)).playerOneScores();
-        } else {
-            verify(players, never()).playerOneScores();
+        } else if (scorer.equals(Scorer.PLAYER_TWO)) {
+            verify(players, Mockito.times(1)).playerTwoScores();
         }
     }
 }

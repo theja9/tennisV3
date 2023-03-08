@@ -17,8 +17,10 @@ public class TennisController {
 
     @GetMapping("/updateScore")
     public void updateScore(@RequestParam Scorer scorer) {
-        if (scorer.equals(Scorer.PLAYER_ONE)){
+        if (scorer.equals(Scorer.PLAYER_ONE)) {
             players.playerOneScores();
+        } else if (scorer.equals(Scorer.PLAYER_TWO)) {
+            players.playerTwoScores();
         }
     }
 }
