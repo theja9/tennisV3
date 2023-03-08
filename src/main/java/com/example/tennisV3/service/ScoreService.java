@@ -8,6 +8,9 @@ import static com.example.tennisV3.enums.ScoreConstants.*;
 public class ScoreService {
 
     public String getScore(int playerOneScore, int playerTwoScore) {
+        if (playerOneScore == playerTwoScore) {
+            return translateScore(playerOneScore) + SPACE + ALL;
+        }
         return String.format("%s %s", translateScore(playerOneScore), translateScore(playerTwoScore));
     }
 

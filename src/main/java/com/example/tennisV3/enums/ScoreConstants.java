@@ -13,6 +13,8 @@ public class ScoreConstants {
     public static final int TWO = 2;
     public static final int THREE = 3;
     private static final String FORTY = "Forty";
+    public static final String ALL = "All";
+    public static final String SPACE = " ";
 
     public static final Map<Integer, String> SCORE_MAP ;
     static {
