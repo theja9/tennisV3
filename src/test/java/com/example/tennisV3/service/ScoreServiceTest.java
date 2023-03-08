@@ -17,7 +17,7 @@ public class ScoreServiceTest {
     ScoreService scoreService;
 
     @Mock
-    private PlayerService players;
+    private PlayerService playerService;
 
     @ParameterizedTest
     @CsvSource({
@@ -57,8 +57,8 @@ public class ScoreServiceTest {
     @Test
     public void testResetPoints() {
         scoreService.resetPoints();
-        assertEquals(0, players.getPlayerOnePoints());
-        assertEquals(0, players.getPlayerTwoPoints());
+        assertEquals(0, playerService.getPlayerOnePoints());
+        assertEquals(0, playerService.getPlayerTwoPoints());
     }
 
 

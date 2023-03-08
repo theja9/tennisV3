@@ -9,7 +9,7 @@ import static com.example.tennisV3.enums.ScoreConstants.*;
 public class ScoreService {
 
     @Autowired
-    private PlayerService players;
+    private PlayerService playerService;
 
     public String getScore(int playerOneScore, int playerTwoScore) {
         if (hasAdvantage(playerOneScore, playerTwoScore)) {
@@ -62,7 +62,7 @@ public class ScoreService {
     }
 
     public void resetPoints() {
-        players.setPlayerOnePoints(0);
-        players.setPlayerTwoPoints(0);
+        playerService.setPlayerOnePoints(0);
+        playerService.setPlayerTwoPoints(0);
     }
 }

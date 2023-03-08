@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TennisController {
 
     @Autowired
-    private PlayerService players;
+    private PlayerService playerService;
 
     @Autowired
     private ScoreService scoreService;
@@ -23,15 +23,15 @@ public class TennisController {
     @GetMapping("/updateScore")
     public void updateScore(@RequestParam Scorer scorer) {
         if (scorer.equals(Scorer.PLAYER_ONE)) {
-            players.playerOneScores();
+            playerService.playerOneScores();
         } else if (scorer.equals(Scorer.PLAYER_TWO)) {
-            players.playerTwoScores();
+            playerService.playerTwoScores();
         }
     }
 
     @GetMapping("/getScore")
     public String getScore() {
-        return scoreService.getScore(players.getPlayerOnePoints(), players.getPlayerTwoPoints());
+        return scoreService.getScore(playerService.getPlayerOnePoints(), playerService.getPlayerTwoPoints());
     }
 
     @GetMapping("/quit")

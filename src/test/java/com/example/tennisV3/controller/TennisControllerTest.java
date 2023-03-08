@@ -26,7 +26,7 @@ class TennisControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private PlayerService players;
+    private PlayerService playerService;
 
     @MockBean
     private ScoreService scoreService;
@@ -40,9 +40,9 @@ class TennisControllerTest {
                 .andExpect(status().isOk());
 
         if (scorer.equals(Scorer.PLAYER_ONE)) {
-            verify(players, Mockito.times(1)).playerOneScores();
+            verify(playerService, Mockito.times(1)).playerOneScores();
         } else if (scorer.equals(Scorer.PLAYER_TWO)) {
-            verify(players, Mockito.times(1)).playerTwoScores();
+            verify(playerService, Mockito.times(1)).playerTwoScores();
         }
     }
 
