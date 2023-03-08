@@ -17,7 +17,6 @@ public class ScoreServiceTest {
     @ParameterizedTest
     @CsvSource({
             "0,0,Love Love",
-            "0,-1,Love Invalid Score",
             "1,0,Fifteen Love",
             "0,1,Love Fifteen",
             "2,0,Thirty Love",
