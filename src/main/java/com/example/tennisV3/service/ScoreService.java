@@ -8,6 +8,9 @@ import static com.example.tennisV3.enums.ScoreConstants.*;
 public class ScoreService {
 
     public String getScore(int playerOneScore, int playerTwoScore) {
+        if (Math.max(playerOneScore, playerTwoScore) > THREE && isPointDifferenceOne(playerOneScore, playerTwoScore)) {
+            return getHighestScorer(playerOneScore, playerTwoScore) + SPACE + ADVANTAGE;
+        }
         if (playerOneScore > TWO && playerOneScore == playerTwoScore) {
             return DEUCE;
         }
@@ -19,6 +22,14 @@ public class ScoreService {
 
     private String translateScore(int score) {
         return SCORE_MAP.get(score);
+    }
+
+    private boolean isPointDifferenceOne(int playerOneScore, int playerTwoScore) {
+        return Math.abs(playerOneScore - playerTwoScore) == ONE;
+    }
+
+    private String getHighestScorer(int playerOneScore, int playerTwoScore) {
+        return playerOneScore > playerTwoScore ? PLAYER_ONE : PLAYER_TWO;
     }
 
 }

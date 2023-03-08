@@ -16,6 +16,9 @@ public class ScoreConstants {
     public static final String ALL = "All";
     public static final String SPACE = " ";
     public static final String DEUCE = "Deuce";
+    public static final String ADVANTAGE = "Advantage";
+    public static final String PLAYER_ONE = "PlayerOne";
+    public static final String PLAYER_TWO = "PlayerTwo";
 
     public static final Map<Integer, String> SCORE_MAP ;
     static {
