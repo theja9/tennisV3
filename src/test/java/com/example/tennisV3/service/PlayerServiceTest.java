@@ -14,7 +14,7 @@ public class PlayerServiceTest {
     PlayerService playerService;
 
     @Test
-    public void testIncrement() {
+    public void incrementPlayerOneScoreBy1() {
         playerService.playerOneScores();
         assertEquals(1, playerService.getPlayerOnePoints());
     }
