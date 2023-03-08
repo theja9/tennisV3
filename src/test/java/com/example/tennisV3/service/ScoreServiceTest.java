@@ -21,6 +21,12 @@ public class ScoreServiceTest {
             "0,1,Love Fifteen",
             "2,0,Thirty Love",
             "2,1,Thirty Fifteen",
+            "3,0,Forty Love",
+            "3,1,Forty Fifteen",
+            "2,3,Thirty Forty",
+            "3,2,Forty Thirty",
+            "0,3,Love Forty",
+            "3,0,Forty Love",
     })
     public void testGetScore(int playerOnePoints, int playerTwoPoints, String expectedScore) {
         String translatedScore = scoreService.getScore(playerOnePoints, playerTwoPoints);

@@ -10,11 +10,14 @@ public class ScoreConstants {
     public static final int ZERO = 0;
     public static final int ONE = 1;
     public static final int TWO = 2;
+    public static final int THREE = 3;
+    public static final String FORTY = "Forty";
 
     public static final Map<Integer, String> SCORE_MAP = new HashMap<>();
     static {
         SCORE_MAP.put(ZERO, LOVE);
         SCORE_MAP.put(ONE, FIFTEEN);
         SCORE_MAP.put(TWO, THIRTY);
+        SCORE_MAP.put(THREE, FORTY);
     }
 }
