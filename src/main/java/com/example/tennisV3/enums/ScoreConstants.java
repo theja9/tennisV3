@@ -1,5 +1,6 @@
 package com.example.tennisV3.enums;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,13 +12,16 @@ public class ScoreConstants {
     public static final int ONE = 1;
     public static final int TWO = 2;
     public static final int THREE = 3;
-    public static final String FORTY = "Forty";
+    private static final String FORTY = "Forty";
 
-    public static final Map<Integer, String> SCORE_MAP = new HashMap<>();
+    public static final Map<Integer, String> SCORE_MAP ;
     static {
-        SCORE_MAP.put(ZERO, LOVE);
-        SCORE_MAP.put(ONE, FIFTEEN);
-        SCORE_MAP.put(TWO, THIRTY);
-        SCORE_MAP.put(THREE, FORTY);
+        Map<Integer, String> scoreMap = new HashMap<>();
+        scoreMap.put(ZERO, LOVE);
+        scoreMap.put(ONE, FIFTEEN);
+        scoreMap.put(TWO, THIRTY);
+        scoreMap.put(THREE, FORTY);
+        SCORE_MAP = Collections.unmodifiableMap(scoreMap);
     }
+
 }
