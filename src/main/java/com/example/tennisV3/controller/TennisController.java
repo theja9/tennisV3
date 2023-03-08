@@ -33,4 +33,10 @@ public class TennisController {
     public String getScore() {
         return scoreService.getScore(players.getPlayerOnePoints(), players.getPlayerTwoPoints());
     }
+
+    @GetMapping("/quit")
+    public void quitGame() {
+        scoreService.resetPoints();
+    }
+
 }

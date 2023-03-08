@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TennisController.class)
-public class TennisControllerTest {
+class TennisControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -55,6 +55,13 @@ public class TennisControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/tennis/getScore"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(expectedScore));
+    }
+
+    @Test
+    void testQuitGame() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/tennis/quit"))
+                .andExpect(status().isOk());
+        verify(scoreService, Mockito.times(1)).resetPoints();
     }
 
 }
