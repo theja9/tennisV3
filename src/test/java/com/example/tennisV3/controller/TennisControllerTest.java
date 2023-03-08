@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(TennisController.class)
-class TennisControllerTest {
+public class TennisControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -33,7 +33,7 @@ class TennisControllerTest {
 
     @ParameterizedTest
     @EnumSource(Scorer.class)
-    void updateScoreTest(Scorer scorer) throws Exception {
+    public void updateScoreTest(Scorer scorer) throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/tennis/updateScore")
                 .param("scorer", scorer.name())
                 .contentType(MediaType.APPLICATION_JSON))
