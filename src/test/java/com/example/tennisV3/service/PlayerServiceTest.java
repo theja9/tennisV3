@@ -19,4 +19,10 @@ public class PlayerServiceTest {
         assertEquals(1, playerService.getPlayerOnePoints());
     }
 
+    @Test
+    public void incrementPlayerTwoScoreBy1() {
+        playerService.playerTwoScores();
+        assertEquals(1, playerService.getPlayerTwoPoints());
+    }
+
 }
