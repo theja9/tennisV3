@@ -12,20 +12,17 @@ public class ScoreService {
     private PlayerService players;
 
     public String getScore(int playerOneScore, int playerTwoScore) {
-        if (Math.max(playerOneScore, playerTwoScore) > THREE && isPointDifferenceOne(playerOneScore, playerTwoScore)) {
+        if (hasAdvantage(playerOneScore, playerTwoScore)) {
             return getHighestScorer(playerOneScore, playerTwoScore) + SPACE + ADVANTAGE;
         }
-        if (Math.max(playerOneScore, playerTwoScore) > THREE && isPointDifferenceGreaterThanOne(playerOneScore, playerTwoScore)) {
+        if (isGameOver(playerOneScore, playerTwoScore)) {
             resetPoints();
             return getHighestScorer(playerOneScore, playerTwoScore) + SPACE + WINS;
         }
-        if (playerOneScore > TWO && playerOneScore == playerTwoScore) {
-            return DEUCE;
+        if (isScoreEqual(playerOneScore, playerTwoScore)) {
+            return playerOneScore > TWO ? DEUCE : translateScore(playerOneScore) + SPACE + ALL;
         }
-        if (playerOneScore == playerTwoScore) {
-            return translateScore(playerOneScore) + SPACE + ALL;
-        }
-        return String.format("%s %s", translateScore(playerOneScore), translateScore(playerTwoScore));
+        return getTranslatedScore(playerOneScore, playerTwoScore);
     }
 
     private String translateScore(int score) {
@@ -42,6 +39,26 @@ public class ScoreService {
 
     private boolean isPointDifferenceGreaterThanOne(int playerOneScore, int playerTwoScore) {
         return Math.abs(playerOneScore - playerTwoScore) >= TWO;
+    }
+
+    private String getTranslatedScore(int playerOneScore, int playerTwoScore) {
+        return String.format("%s %s", translateScore(playerOneScore), translateScore(playerTwoScore));
+    }
+
+    private boolean isScoreEqual(int playerOneScore, int playerTwoScore) {
+        return playerOneScore == playerTwoScore;
+    }
+
+    private boolean isScoreGreaterThanThree(int playerOneScore, int playerTwoScore) {
+        return Math.max(playerOneScore, playerTwoScore) > THREE;
+    }
+
+    private boolean hasAdvantage(int playerOneScore, int playerTwoScore) {
+        return isScoreGreaterThanThree(playerOneScore, playerTwoScore) && isPointDifferenceOne(playerOneScore, playerTwoScore);
+    }
+
+    private boolean isGameOver(int playerOneScore, int playerTwoScore) {
+        return isScoreGreaterThanThree(playerOneScore, playerTwoScore) && isPointDifferenceGreaterThanOne(playerOneScore, playerTwoScore);
     }
 
     public void resetPoints() {
