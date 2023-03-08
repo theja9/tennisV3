@@ -11,6 +11,9 @@ public class ScoreService {
         if (Math.max(playerOneScore, playerTwoScore) > THREE && isPointDifferenceOne(playerOneScore, playerTwoScore)) {
             return getHighestScorer(playerOneScore, playerTwoScore) + SPACE + ADVANTAGE;
         }
+        if (Math.max(playerOneScore, playerTwoScore) > THREE && isPointDifferenceGreaterThanOne(playerOneScore, playerTwoScore)) {
+            return getHighestScorer(playerOneScore, playerTwoScore) + SPACE + WINS;
+        }
         if (playerOneScore > TWO && playerOneScore == playerTwoScore) {
             return DEUCE;
         }
@@ -30,6 +33,10 @@ public class ScoreService {
 
     private String getHighestScorer(int playerOneScore, int playerTwoScore) {
         return playerOneScore > playerTwoScore ? PLAYER_ONE : PLAYER_TWO;
+    }
+
+    private boolean isPointDifferenceGreaterThanOne(int playerOneScore, int playerTwoScore) {
+        return Math.abs(playerOneScore - playerTwoScore) >= TWO;
     }
 
 }
